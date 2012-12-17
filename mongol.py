@@ -75,6 +75,9 @@ for addr in hosts:
 # empty list of found firewalls
 firewalls = []
 
+# output the ip's to a file.
+outfd = open(outputfile, "w")
+
 for host in hostnames:
 	# first we create a real handshake and send the censored term
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -157,6 +160,8 @@ for host in hostnames:
 			# add the firewall's IP to the list to be written out if it does not already exist
 			if filterIP not in firewalls:
 				firewalls.append(filterIP)
+				outfd.write(ip + "\n")
+				outfd.flush()
 
 			if shortip in noFWlist:
 				hopsdiff = noFWlist.index(filterIP) - FWlist.index(filterIP)
@@ -175,8 +180,4 @@ for host in hostnames:
 		continue
 	s.close()
 
-# output the ip's to a file.
-fd = open(outputfile, "w")
-for ip in firewalls:
-	fd.write(ip + "\n")
-fd.close()
+outfd.close()

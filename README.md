@@ -13,9 +13,9 @@ It is built using scapy[1] for some of the TCP header modification requirements
 
 ##Usage
 
-python mongol.py -i hostslist.txt -o outputfilename.txt
+python mongol.py -i beyond-gfw.list -o outputfilename.txt
 
-	hostslist.txt --- The input file is a newline seperated list of ip's and domain names of websites hosted within china.
+	beyond-gfw.list --- The input file is a newline seperated list of ip's and domain names of websites hosted within China (out of China if you are in China).
 
 	outputfilename.txt --- The output file will be location where ip addresses of found filtering devices will be printed.
 
