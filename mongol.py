@@ -126,8 +126,8 @@ for host in hostnames:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         try:
             s.connect((ipaddr, port))
-         except socket.timeout:
-                print "connection to " + host + " has timedout moving on"
+        except socket.timeout:
+            print "connection to " + host + " has timedout moving on"
             continue
         s.send(MESSAGE % ("/tibetalk", host) )
 
@@ -158,7 +158,7 @@ for host in hostnames:
             print "shortip: " + shortip
 
             # add the firewall's IP to the list to be written out if it does not already exist
-            outfd.write(ip + "\n")
+            outfd.write(filterIP + "\n")
             outfd.flush()
             if filterIP not in firewalls:
                 firewalls.append(filterIP)
